@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cricket AI Umpire</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/card.css">
+    <style>
+      
+    </style>
+
+</head>
+<body onload="scrollToResults()">
+            <!-- HEADER -->
+        
+            <div class="header">
+                <p  style="width: 40%; margin-left: 50%; text-align: left; margin-top: 20%; font-size: 64%; margin-right: 25%; color: brown;">
+                  Our cutting-edge AI model is specifically tailored to tackle one crucial aspect of cricket - detecting wide balls. With unmatched precision and lightning-fast analysis, CricJudge ensures that no wide ball goes unnoticed. We strive to bring a new level of accuracy and fairness to the game, empowering players, coaches, and umpires alike.
+                </p>
+            </div>
+              
+            </div>
+
+            <!-- NAVBAR -->
+        <div class="container-fluid">
+            <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                <li><a id="len1" class="hoverable active" href="app.html">Home</a></li>
+                <!-- <li><a id="len2" class="hoverable" href="#">About</a></li> -->
+                <li><a id="len3" class="hoverable" href="/research">Research</a></li>
+                <li><a id="len4" class="hoverable" href="/flow">Workflow</a></li>
+
+                </ul>
+            </div>
+          </nav>
+        </div>
+
+        <div class="background-image">
+          <img src="{{ url_for('static', filename='babar.jpg') }}" alt="Background Image" style="max-width: 100%; height: auto;">
+          <form id="video-form" method="post" enctype="multipart/form-data" action="{{ url_for('predict') }}">
+            <div class="card">
+              <button id="select-video-button"><strong>Select Video</strong> </button>
+
+              <div id="video-container">
+                {% if video_file %}
+                <video controls width="60%" height="500px">
+                  <source src="{{ url_for('static', filename='uploads/' ~ video_file.filename) }}" type="video/mp4">
+                </video>
+                {% endif %}
+              </div>
+              <div class="loader" id="loader"></div>
+
+              <div id="result-container">
+                {% if result %}
+                  <h3 style = "font-family: georgia">{{ result|safe }}</p>
+                {% endif %}
+              </div>    
+              </div>
+            <input type="file" id="video-input" name="video" accept="video/*" style="display: none;">
+          </form>
+        </div>
+
+
+        <div class="container">
+          <div class="box">
+            <div class="imgBx">
+
+                    <img src="static/shujaan.jpg" alt="Shujaan Azhar">
+
+            </div>
+            <div class="content">
+              <div>
+                <a href = "https://www.linkedin.com/in/shujaan-azhar-7bb330219/">
+                    <h2>Shujaan Azhar</h2>
+                </a>
+                <p>He possesses a strong passion for AI and data science, actively engaging in both fields. He has successfully completed numerous deep learning projects that have significantly contributed to his expertise in his professional endeavors.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="imgBx">
+              <img src="static/umar2.jpg">
+            </div>
+            <div class="content">
+              <div>
+                  <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAD1MqOIBSJauaJMHOJvkgx3Td4nn5mgZ3No&keywords=muhammad%20umar&origin=RICH_QUERY_TYPEAHEAD_HISTORY&position=0&searchId=a7d57584-ce38-47e5-bb8d-aa9d41ce1987&sid=X6f">
+                    <h2>Muhammad Umar</h2>
+                  </a>
+                <p>He is a Big Data Passionist. He has worked with many big data frameworks and has now extended his experience by working immensely in this project.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="imgBx">
+              <img src="static/uswah2.jpg">
+            </div>
+            <div class="content">
+              <div>
+                    <a href="https://www.linkedin.com/in/uswah-akhund-306403224/">
+                        <h2>Uswah Akhund</h2>
+                    </a>
+                <p>She is a dedicated student whose profound enthusiasm for AI fuels their academic journey. With an unwavering commitment, she stands poised to make significant contributions in this evolving field.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+          <div class="footer" style="display: flex; flex-direction: column; align-items: center;">
+            <a href="https://www.nu.edu.pk/" target="_blank">FAST-NU</a><br>
+            <img src="static\uni logo.png" alt="Left Image" style=" width: 10%;"><br><br>
+            <a href="http://isb.nu.edu.pk/aim/" target="_blank">AIM Lab</a><br>
+            <img src="static\aim logo.png" alt="Left Image" style=" width: 10%;"><br><br>
+
+
+            
+          </div>
+
+        
+    
+          <script src="{{ url_for('static', filename='app.js') }}"></script>
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+        
+    
+
+</body>
+</html>
